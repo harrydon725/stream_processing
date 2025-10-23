@@ -4,7 +4,7 @@ import socket
 conf = {
     'bootstrap.servers':'localhost:9092',
     'group.id': 'this_group',
-    'auto.offset.reset': 'earliest' 
+    'auto.offset.reset': 'latest' 
 }
 
 consumer = Consumer(conf)
