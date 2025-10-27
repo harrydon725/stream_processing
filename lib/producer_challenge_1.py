@@ -8,7 +8,7 @@ import socket
 # This small program publishes JSON 
 # orders with random amounts and customer IDs
 # from a given list into a Kafka topic 'orders'.
-
+ 
 conf = {
     'bootstrap.servers': 'localhost:9092',
     'client.id': socket.gethostname()
