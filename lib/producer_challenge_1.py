@@ -1,14 +1,8 @@
-# publish_orders.py
-
 import random
 import time
 from confluent_kafka import Producer
 import socket
 
-# This small program publishes JSON 
-# orders with random amounts and customer IDs
-# from a given list into a Kafka topic 'orders'.
- 
 conf = {
     'bootstrap.servers': 'localhost:9092',
     'client.id': socket.gethostname()
@@ -16,8 +10,7 @@ conf = {
 
 producer = Producer(conf)
 
-# Simple sequential numeric ID
-id = 0 
+id = 0
 customer_ids = list(range(1, 20))
 
 while True:
@@ -35,6 +28,5 @@ while True:
 
     producer.flush()
 
-    # Sleep a bit
     seconds = random.randint(1, 3)
     time.sleep(seconds)

@@ -3,7 +3,6 @@ from aws_msk_iam_sasl_signer import MSKAuthTokenProvider
 import socket 
 def oauth_cb(oauth_config):
     auth_token, expiry_ms = MSKAuthTokenProvider.generate_auth_token("eu-west-2")
-    # Note that this library expects oauth_cb to return expiry time in seconds since epoch, while the token generator returns expiry in ms
     return auth_token, expiry_ms/1000
 
 consumer = Consumer({

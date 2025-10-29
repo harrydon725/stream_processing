@@ -4,7 +4,6 @@ import socket
 
 def oauth_cb(oauth_config):
     auth_token, expiry_ms = MSKAuthTokenProvider.generate_auth_token("eu-west-2")
-    # Note that this library expects oauth_cb to return expiry time in seconds since epoch, while the token generator returns expiry in ms
     return auth_token, expiry_ms/1000
 
 conf = {
@@ -15,13 +14,8 @@ conf = {
     'oauth_cb': oauth_cb,
 }
 
-## Rest of your code below
-
 producer = Producer(conf)
 
-# Sending to topic 'orders' with the key 'hello' and a value.
 producer.produce('orders', key="hello", value="Hello!")
 
-# We need to explicitly 'flush' messages, as they normally get sent in batches
-# only periodically.
 producer.flush()
